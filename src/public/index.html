@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <main>
+      <h1>Energy Simple Dashboard</h1>
+      <section class="main-dash">
+        <canvas id="myChart"></canvas>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Last 24 Hours", "Las 1hour"],
+          datasets: [
+            {
+              label: "# in voltz",
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              ticks: { color: "white", beginAtZero: true },
+            },
+            x: {
+              ticks: { color: "white", beginAtZero: true },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: "white",
+                font: {
+                  size: 18,
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
