@@ -5,7 +5,6 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 
-const { publish } = require("./producer");
 const { consume } = require("./consumer");
 
 app.use(express.static(path.join(__dirname, "public")));
