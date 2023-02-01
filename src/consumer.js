@@ -10,7 +10,9 @@ async function consume(topic, onResult) {
     const consumer = kafka.consumer({ groupId: TOPICS[topic] });
 
     await consumer.connect();
+    console.log("Consumer connected!")
     await consumer.subscribe({ topic: TOPICS[topic], fromBeginning: true });
+    console.log(`Consumer subscribed to topic ${TOPICS[topic]}!`)
 
     await consumer.run({
       eachMessage: async (props) => {

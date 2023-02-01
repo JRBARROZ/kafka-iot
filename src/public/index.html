@@ -19,20 +19,17 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
       var socket = io.connect("http://localhost:3000/");
-
-      socket.on("room1", (message) => {
-        console.log(message)
-      })
       const ctx = document.getElementById("myChart");
-
-      new Chart(ctx, {
+      const voltageReads = []
+      
+      const myChart = new Chart(ctx, {
         type: "line",
         data: {
           labels: ["Last 24 Hours", "Las 1hour"],
           datasets: [
             {
               label: "# in voltz",
-              data: [12, 19, 3, 5, 2, 3],
+              data: voltageReads,
               borderWidth: 1,
             },
           ],
@@ -59,6 +56,15 @@
           },
         },
       });
+
+      socket.on("room1", (message) => {
+        console.log(message)
+        voltageReads.push(message.value)
+        
+        myChart.data.datasets[0].data = voltageReads
+        myChart.update()
+      })
+
     </script>
   </body>
 </html>
