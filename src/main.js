@@ -4,6 +4,10 @@ const port = process.env.PORT;
 const express = require("express");
 const app = express();
 const path = require("node:path");
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 const { consume } = require("./consumer");
 
@@ -13,15 +17,16 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/"));
 });
 
-consume("rooms", (props) => {
-  const { message } = props
 
-  console.log({
-    key: message.key.toString(),
-    value: JSON.parse(message.value.toString())
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  consume("rooms", (props) => {
+    const { message: { key, value} } = props
+  
+    socket.emit(key.toString(), JSON.parse(value.toString()))
   });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`🔥 🚀 Server is up on : ${port}`);
 });
