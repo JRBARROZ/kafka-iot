@@ -18,7 +18,7 @@ setInterval(() => {
     data = data * 1.1  // 10% de aumento no consumo se tiver gente na sala.
   }
 
-  produce("room1", data.toString());
+  produce("rooms", data.toString());
 }, 1000);
 
  

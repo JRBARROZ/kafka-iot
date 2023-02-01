@@ -1,5 +1,5 @@
 const TOPICS = {
-  room1: "room1",
+  rooms: "rooms",
 };
 
 module.exports = {

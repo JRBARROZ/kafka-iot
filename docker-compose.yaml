@@ -56,4 +56,4 @@ services:
     command: >
       bash -c
         "sleep 10s &&
-        kafka-topics --create --topic=room1 --if-not-exists --bootstrap-server=broker:29092
+        kafka-topics --create --topic=rooms --if-not-exists --bootstrap-server=broker:29092

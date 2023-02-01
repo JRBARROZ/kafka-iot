@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/"));
 });
 
-consume("room1", (props) => {
+consume("rooms", (props) => {
   const { message } = props
 
   console.log({
