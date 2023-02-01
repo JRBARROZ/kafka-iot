@@ -13,8 +13,13 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/"));
 });
 
-consume("energy_measure", (props) => {
-  console.log(props.message.value.toString());
+consume("room1", (props) => {
+  const { message } = props
+
+  console.log({
+    key: message.key.toString(),
+    value: JSON.parse(message.value.toString())
+  });
 });
 
 app.listen(port, () => {

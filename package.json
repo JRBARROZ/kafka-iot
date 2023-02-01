@@ -9,8 +9,11 @@
     "kafkajs": "^2.2.3"
   },
   "scripts": {
-    "start:producer": "node ./src/producer.js",
-    "start:consumer": "node ./src/consumer.js",
+    "start:producer": "nodemon ./src/producer.js",
+    "start:consumer": "nodemon ./src/consumer.js",
     "dev": "nodemon ./src/main.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

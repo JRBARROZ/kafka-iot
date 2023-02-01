@@ -1,5 +1,5 @@
 const TOPICS = {
-  energy_measure: "energy_measure",
+  room1: "room1",
 };
 
 module.exports = {
