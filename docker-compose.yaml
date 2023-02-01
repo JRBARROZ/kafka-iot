@@ -57,5 +57,3 @@ services:
       bash -c
         "sleep 10s &&
         kafka-topics --create --topic=room1 --if-not-exists --bootstrap-server=broker:29092
-        
-# room_1, - { value: 123123, room_is_empty: true }
